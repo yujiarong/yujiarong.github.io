@@ -23,3 +23,31 @@ function readTxt($file)
 }
 
 ```
+
+### 形成斐波那数列
+
+``` bash
+function fb($n){
+	$a = 0;$b=1;
+	while($n >0){
+		yield $b;
+		list($b,$a) = [$a + $b,$b];
+		$n--;
+	}
+}
+//如果用递归实现必须要cache节点数据,不然就是以指数增长的计算。
+$map   = [];
+function fbd($n){
+	global $map;
+	if($n == 1)return 1;
+	if($n == 2)return 2;
+	echo 'aaaaaaa'.PHP_EOL;
+	if(isset($map[$n]) ){
+		return $map[$n];
+	}else{
+		$data = f($n-1) + f($n-2);
+		$map[$n] = $data;
+		return $data;
+	}
+}
+```
