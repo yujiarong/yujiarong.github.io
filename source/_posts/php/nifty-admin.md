@@ -5,8 +5,7 @@ categories: PHP
 tag: laravel
 ---
 
-# niftyAdmin
-[niftyAdmin](http://nifty.dwyjr.cn/)  基于Laravel5.5框架和[Nifty](http://wrapbootstrap.com/preview/WB0048JF7)前端组建的 基础管理系统框架
+[niftyAdmin](https://github.com/yujiarong/niftyAdmin)  基于Laravel5.5框架和[Nifty](http://wrapbootstrap.com/preview/WB0048JF7)前端组建的 基础管理系统框架
 [demo地址](http://nifty.dwyjr.cn/)  
 
 ## 介绍

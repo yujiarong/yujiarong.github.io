@@ -1,5 +1,5 @@
 ---
-title: yield 单向链表操作
+title: 单向链表操作
 date: 2018-03-08 
 categories: 算法
 tag: 链表
