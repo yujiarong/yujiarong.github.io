@@ -12,7 +12,7 @@ tag: fork
 * pcntl_fork()函数在执行失败时，会在父进程返回-1,当然也不会有子进程产生。
 
 #### 简单的子进程生成例子
-``` bash
+``` php
 $pid = pcntl_fork();
  
 if($pid == -1) {
@@ -32,7 +32,7 @@ if($pid == -1) {
 ```
 #### 多进程生成例子
 
-``` bash
+``` php
 define('FORK_NUMS', 3);
  
 $pids = array();
@@ -54,7 +54,7 @@ for($i = 0; $i < FORK_NUMS; ++$i) {
 
 #### 多进程写入文件
 
-``` bash
+``` php
 define('FORK_NUMS', 3);
 $pids = array();
  
@@ -90,7 +90,7 @@ fclose($fp);
 
 ##### 用方法生产进程
 
-``` bash
+``` php
 function createProcess($callback){
     $pid = pcntl_fork();
     if($pid < 0){
@@ -125,7 +125,7 @@ print_r($childList);
 
 ##### 用类生产进程
 
-``` bash
+``` php
 class Process  
 {
     private $callback; //进程处理方法
@@ -194,7 +194,7 @@ echo '主进程执行完毕';
 消息队列是存放在内存中的一个队列。如下代码将创建3个生产者子进程，2个消费者子进程。这5个进程将通过消息队列通信。
 由于消息队列取数据是原子性的,所以不需要锁或者信号量
 
-``` bash
+``` php
 $parentPid = posix_getpid();
 echo "parent progress pid:{$parentPid}\n";$childList = array();
 // 创建消息队列,以及定义消息类型(类似于数据库中的库)
@@ -268,7 +268,7 @@ echo "({$parentPid})main progress end!\n";
 php 中发送信号用 posix_kill($pid,SIGINT);
 下面这个例子中，父进程等待5秒钟，向子进程发送sigint信号。子进程捕获信号，掉信号处理函数处理。
 
-``` bash
+``` php
 $parentPid = posix_getpid();
 echo "parent progress pid:{$parentPid}\n";
 
@@ -310,7 +310,7 @@ echo "({$parentPid})main progress end!\n";
 * 信号量：是系统提供的一种原子操作，一个信号量，同时只有你个进程能操作。一个进程获得了某个信号量，就必须被该进程释放掉。
 * 共享内存：是系统在内存中开辟的一块公共的内存区域，任何一个进程都可以访问，在同一时刻，可以有多个进程访问该区域，为了保证数据的一致性，需要对该内存区域加锁或信号量。
 
-``` bash
+``` php
 $parentPid = posix_getpid();
 echo "parent progress pid:{$parentPid}\n";
 $childList = array();
@@ -387,7 +387,7 @@ echo "({$parentPid})main progress end!\n";
 
 管道是比较常用的多进程通信手段，管道分为无名管道与有名管道，无名管道只能用于具有亲缘关系的进程间通信，而有名管道可以用于同一主机上任意进程。这里只介绍有名管道。下面的例子，子进程写入数据，父进程读取数据。
 
-``` bash
+``` php
 // 定义管道路径,与创建管道
 $pipe_path = '/data/test.pipe';
 if(!file_exists($pipe_path)){

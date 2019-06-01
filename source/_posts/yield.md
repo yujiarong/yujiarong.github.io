@@ -8,7 +8,7 @@ tag: yield
 
 ### 读取超大文件
 
-``` bash
+``` php
 function readTxt($file)
 {
     # code...
@@ -26,7 +26,7 @@ function readTxt($file)
 
 ### 形成斐波那数列
 
-``` bash
+``` php
 function fb($n){
 	$a = 0;$b=1;
 	while($n >0){

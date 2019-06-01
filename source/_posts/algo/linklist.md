@@ -7,7 +7,7 @@ tag: 链表
 
 ### PHP 操作单向链表
 
-``` bash
+``` php
 class SingleLinkedListNode
 {
     /**
@@ -37,7 +37,7 @@ class SingleLinkedListNode
 }
 ```
 
-``` bash
+``` php
 class SingleLinkedList
 {
     /**
@@ -362,7 +362,7 @@ class SingleLinkedList
 ```
 ### 合并两个有序的单向链表
 逻辑和2个有序数据归并差不多，只是链表操作需要注意。模拟2个有序链表的时候 如果用 list2 = $list  会出现循环引用 很刺激 
-``` bash
+``` php
 //模拟2个 有序链表
 $list = new SingleLinkedList();
 $list->insert(10);
@@ -409,7 +409,7 @@ print_r($newList);
 ```
 
 ### 合并2个有序数组
-``` bash
+``` php
 <?php
 #有序数组归并
 $a = [5,8,23,78];

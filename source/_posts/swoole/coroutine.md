@@ -14,7 +14,7 @@ tag: swoole
 
 #### Task 
 Task 是普通生成器的装饰器。我们将生成器赋值给它的成员变量以供后续使用，然后实现一个简单的 run() 和 finished() 方法。run() 方法用于执行任务，finished() 方法用于让调度程序知道何时终止运行。
-``` bash
+``` php
 class Task
 {
     protected $generator;
@@ -45,7 +45,7 @@ class Task
 ```
 #### Scheduler 
 Scheduler 用于维护一个待执行的任务队列。run() 会弹出队列中的所有任务并执行它，直到运行完整个队列任务。如果某个任务没有执行完毕，当这个任务本次运行完成后，我们将再次入列。
-``` bash
+``` php
 class Scheduler
 {
     protected $queue;
@@ -74,7 +74,7 @@ class Scheduler
 }
 ```
 #### 使用
-``` bash
+``` php
 $scheduler = new Scheduler();
 
 $task1 = new Task(call_user_func(function() {
@@ -100,7 +100,7 @@ print "用时: ".(microtime(true) - $startTime);
 #### 执行结果
 交替执行,task1执行到yeild交出控制权，轮到task2执行到yeild再交出控制权，再一次轮到task1，直到task1执行完，队列里只剩下task2自我陶醉了。
 虽然执行结果是这样的，但是效果并不是我们想要的,执行了9秒那和我们同步执行有什么区别，因为sleep()是同步阻塞的，接下来我们把sleep换一下。
-``` bash
+``` php
 task1: 0
 task1: 1
 task2: 0
@@ -114,7 +114,7 @@ task2: 5
 ```
 #### 异步sleep
 需要用到swoole,co::sleep()是swoole自带的异步sleep,go()是 [swoole协程](https://wiki.swoole.com/wiki/page/p-coroutine.html) 的创建命令
-``` bash
+``` php
 function async_sleep($s){
 	return  go(function ()use($s)  {
 			    co::sleep($s); // 模拟请求接口、读写文件等I/O
@@ -144,7 +144,7 @@ $scheduler->run();
 print "用时: ".(microtime(true) - $startTime);
 ```
 执行结果，这应该就我们想要的IO操作异步并发,一共9个IO实际时间=1个IO,如果这个异步IO是异步mysql，异步http等就大大提升了我们脚本的并发能力
-``` bash
+``` php
 task1: 0
 task2: 0
 task1: 1
@@ -158,7 +158,7 @@ task2: 5
 ```
 ### Swoole 协程
 从4.0版本开始Swoole提供了完整的协程(Coroutine)+通道(Channel)特性。应用层可使用完全同步的编程方式，底层自动实现异步IO。这句话是[swoole](https://wiki.swoole.com/wiki/page/p-coroutine.html)说的。
-``` bash
+``` php
 for ($i = 0; $i < 10; ++$i) {
     // swoole 创建协程
     go(function () use ($i) {
@@ -176,7 +176,7 @@ print "协程用时: ".(microtime(true) - $time);
 
 swoole的[Coroutine\\MySQL](https://wiki.swoole.com/wiki/page/p-coroutine_mysql.html)具体操作可以看这里,代码中举了异步和同步的mysql请求和并发试一下， dump需要引入symfony,方便打印对象的结构。
 
-``` bash
+``` php
 //异步mysql
 function asyncMysql(){
 
@@ -249,7 +249,7 @@ dump($endTime-$startTime);
 看运行时间不太对哈,这个怎么差了这么一点。我想的是这样的哈，Coroutine\MySQL 上面的例子异步IO操作应该是 connect 和 query，其他的例如创建客户端那就是同步操作了，这个消耗是同步阻塞的,而且占了比例不小,所以才出现这样的情况。
 那想一下我们是不是可以这样写，把mysql异步客服端直接拿出来让协程共享。
 
-``` bash
+``` php
 function asyncMysql(){
     go(function(){
         $db = new \Swoole\Coroutine\Mysql();
@@ -281,7 +281,7 @@ Stack trace:
 那我们就简单实现一个mysql的连接池,复用协程客户端，实现长连接。
 
 #### Swoole 协程MySQL连接池
-``` bash
+``` php
 <?php 
 require __DIR__ . '/../bootstrap.php';
 class MysqlPool
@@ -361,47 +361,49 @@ $config = array(
 
 $pool = new MysqlPool($config);
 ``` 
-好了，一个简单的连接池已经搞好了,我先天真的用一下
-``` bash
+好了，一个简单的连接池已经搞好了,我先用一下
+``` php
 
-go(function()use($pool){ 
-
+go(function()use($config){
+    $pool = new MysqlPool($config);
     for($i=0;$i<2;$i++){
-        go(function()use($pool){
+        go(function ()use($pool) {
             $mysql = $pool->get();
             $result = $mysql->query('select * from users limit 1');
             dump($result);
             $pool->put($mysql);
         });
     }
+    dump($pool);
 
 });
-swoole_event_wait();
-dump($pool);
+
 ``` 
-好了结果是出来了，但是脚本并没有正常退出,而是直接阻塞了,我再换一种方法使用，新增一个defer()协程推出之前释放连接池的资源。
-``` bash
+好了结果出来了，新增一个defer()，在协程推出之前释放连接池的资源。
+``` php
 
 go(function()use($pool){ 
+    $pool = new MysqlPool($config);
     defer(function () use ($pool) { //用于资源的释放, 会在协程关闭之前(即协程函数执行完毕时)进行调用, 就算抛出了异常, 已注册的defer也会被执行.
         echo "Closing connection pool\n";
         $pool->destruct();
     });
-
-    $mysql = $pool->get();
-    $result = $mysql->query('select * from users limit 1');
-    dump($result);
-    $pool->put($mysql);
-
+    for($i=0;$i<2;$i++){
+        go(function ()use($pool) {
+            $mysql = $pool->get();
+            $result = $mysql->query('select * from users limit 1');
+            dump($result);
+            $pool->put($mysql);
+        });
+    }
+     dump($pool);
 });
 ``` 
-结果是对的，而且脚本也正常退出了，但是这个连接池就有点无语了，如果只能这样用那我干脆直接新建一个链接不就好了嘛。这个有一个比较完善的 [协程客户端链接池包](https://github.com/open-smf/connection-pool)
-这个在HTTP服务，或者websocket服务这种常驻内存的脚本应该还是可以的吧，这里我也只能想到这个，不知道到各位大佬有什么见解,部门就我一个人学swoole确实有点苦逼。
-
+这个有一个比较完善的 [协程客户端链接池包](https://github.com/open-smf/connection-pool)
 
 #### Swoole 协程 Channel 实现并发数据收集
 这里使用子协程+通道来并发收集数据，理想的情况是使用连接池,但是会遇到问题。
-``` bash
+``` php
 //每个子进程创建一个mysql连接
 go(function()use($pool,$config){
     $chan = new chan(10);

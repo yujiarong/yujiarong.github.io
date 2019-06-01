@@ -13,7 +13,7 @@ tag: redis
 ### Redis 分布式锁
 
 这里使用PRedis来访问Redis
-``` bash
+``` php
 <?php
 
 use PRedis;

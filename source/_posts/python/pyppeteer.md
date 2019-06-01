@@ -11,7 +11,7 @@ tag: pypppeteer
 
 ### pyppeteer
 
-``` bash
+``` php
 import asyncio
 from pyppeteer import launch
 

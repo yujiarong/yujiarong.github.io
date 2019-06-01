@@ -9,7 +9,7 @@ tag: future
 
 ### 进程池
 
-``` bash
+``` php
 from concurrent.futures import ProcessPoolExecutor
 import os,time,random
 def task(n):
@@ -45,7 +45,7 @@ if __name__ == '__main__':
 ### 线程池
 
 
-``` bash
+``` php
 from concurrent.futures import ProcessPoolExecutor,ThreadPoolExecutor
 import threading
 import os,time,random

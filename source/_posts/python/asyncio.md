@@ -13,7 +13,7 @@ tag: asyncio
 
 ### 定义一个协程
 
-``` bash
+``` php
 import asyncio
 import time
 
@@ -45,7 +45,7 @@ for result in results:
 print("Time:", now()-start)
 ```
 执行结果
-``` bash
+``` php
 waiting: 1
 waiting: 2
 waiting: 4
@@ -62,7 +62,7 @@ Time: 4.022229909896851
 
 很多时候，我们的事件循环用于注册协程，而有的协程需要动态的添加到事件循环中。一个简单的方式就是使用多线程。当前线程创建一个事件循环，然后在新建一个线程，在新线程中启动事件循环。当前线程不会被block。
 
-``` bash
+``` php
 import asyncio
 import time
 from threading import Thread

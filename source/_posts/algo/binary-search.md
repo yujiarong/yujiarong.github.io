@@ -10,7 +10,7 @@ $data = [8,11,19,23,33,33,33,45,55,67,98];
 
 ### 普通的二分查找
 
-``` bash
+``` php
 function binarySearch(array $data,$find){
 	$left  = 0;
 	$right = count($data) - 1;
@@ -30,7 +30,7 @@ function binarySearch(array $data,$find){
 
 ### 找到第一个=find的元素
 
-``` bash
+``` php
 function findFirstEqual(array $data,$find) {
     $length = count($data);
     $left = 0;
@@ -61,7 +61,7 @@ function findFirstEqual(array $data,$find) {
 ### 找到最后一个=find的元素
 
 
-``` bash
+``` php
 function findLastEqual(array $data,$find) {
     $length = count($data);
     $left = 0;
@@ -92,7 +92,7 @@ function findLastEqual(array $data,$find) {
 
 ### 找到第一个大于等于find的元素
 
-``` bash
+``` php
 function findFirstGreaterEqual(array $data,$find) {
     $length = count($data);
     $left = 0;
@@ -115,7 +115,7 @@ function findFirstGreaterEqual(array $data,$find) {
 
 ### 找到最后一个小于等于find的元素
 
-``` bash
+``` php
 function findLastLessEqual(array $data,$find) {
     $length = count($data);
     $left = 0;
