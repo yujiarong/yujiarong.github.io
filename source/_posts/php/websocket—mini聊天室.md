@@ -3,6 +3,7 @@ title: Websokcet 实现mini聊天室
 date: 2019-05-21
 categories: php
 tag: websokcet
+top: true
 ---
 
 前端经常需要与服务器进行持续的通讯以保持双方信息的同步，long long ago 我们会使用长轮询的方式来实现比如:

@@ -3,6 +3,7 @@ title: niftyAdmin 自定义后台管理系统框架
 date: 2018-12-01 
 categories: PHP
 tag: laravel
+top: true
 ---
 
 [niftyAdmin](https://github.com/yujiarong/niftyAdmin)  基于Laravel5.5框架和[Nifty](http://wrapbootstrap.com/preview/WB0048JF7)前端组建的 基础管理系统框架

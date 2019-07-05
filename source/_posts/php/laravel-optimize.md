@@ -40,7 +40,7 @@ gzip_vary on;
 
 响应头中 Content-Encoding 字段是 gzip，表示该网页是经过 gzip 压缩的。
 
-### 使用swoole来laravel优化项目
+### 使用swoole来优化laravel项目
 我们这里使用[laravels](https://github.com/hhxsv5/laravel-s)来优化laravel5.5
 1. composer require "hhxsv5/laravel-s:~3.5.0" -vvv
 2. 配置ningx的代理到swoole端口。Nginx的配置,使用的是proxy_pass+upstream。

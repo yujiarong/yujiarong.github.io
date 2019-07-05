@@ -13,7 +13,21 @@
                 <% if (config.description && config.description.length > 0) { %>
                     <%= config.description %>
                 <% } else { %>
-                    This is your root _config.yml 'description' value.
+                   
+                <% } %>
+            </div>
+            <div class="cover-btns">
+                <a href="#indexCard" class="waves-effect waves-light btn">
+                    <i class="fa fa-angle-double-down"></i><%- __('startRead') %>
+                </a>
+                <% if (theme.indexbtn && theme.indexbtn.enable) { %>
+                <a href="<%- theme.indexbtn.url %>" class="waves-effect waves-light btn" target="_blank">
+                    <i class="fa <%- theme.indexbtn.icon %>"></i><%- theme.indexbtn.name %>
+                </a>
+                <% } else if (theme.githubLink.enable) { %>
+                <a href="<%- theme.githubLink.url %>" class="waves-effect waves-light btn" target="_blank">
+                    <i class="fa fa-github %>"></i><%- theme.githubLink.title %>
+                </a>
                 <% } %>
             </div>
         </div>
