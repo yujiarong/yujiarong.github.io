@@ -1,15 +1,16 @@
 ---
-date: 2018-05-11 
 title: concurrent.futures 并发操作
 categories: Python
-tag: future 
+tag: future
+abbrlink: 18492
+date: 2018-05-11 00:00:00
 ---
 
 [concurrent.futures]()模块的基础是Exectuor，Executor是一个抽象类，它不能被直接使用。但是它提供的两个子类ThreadPoolExecutor和ProcessPoolExecutor却是非常有用，顾名思义两者分别被用来创建线程池和进程池的代码。我们可以将相应的tasks直接放入线程池/进程池，不需要维护Queue来操心死锁的问题，线程池/进程池会自动帮我们调度。
 
 ### 进程池
 
-``` bash
+``` php
 from concurrent.futures import ProcessPoolExecutor
 import os,time,random
 def task(n):
@@ -45,7 +46,7 @@ if __name__ == '__main__':
 ### 线程池
 
 
-``` bash
+``` php
 from concurrent.futures import ProcessPoolExecutor,ThreadPoolExecutor
 import threading
 import os,time,random

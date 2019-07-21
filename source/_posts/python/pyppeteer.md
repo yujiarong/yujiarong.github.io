@@ -1,8 +1,9 @@
 ---
-date: 2018-06-21
 title: Pypppeteer
 categories: Python
-tag: pypppeteer 
+tag: pypppeteer
+abbrlink: 37533
+date: 2018-06-21 00:00:00
 ---
 
 之前做爬虫或者浏览器自动化操作都用selenium ，再配合docker可以进行分布式部署,但是selenium太耗性能,这里有另外个选择[puppeteer](https://github.com/GoogleChrome/puppeteer)谷歌浏览器在17年自行开发了Chrome Headless特性，并与之同时推出了puppeteer，可以理解成我们日常使用的Chrome的无界面版本以及对其进行操控的js接口套装
@@ -11,7 +12,7 @@ tag: pypppeteer
 
 ### pyppeteer
 
-``` bash
+``` php
 import asyncio
 from pyppeteer import launch
 

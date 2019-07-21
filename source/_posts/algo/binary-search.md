@@ -1,8 +1,9 @@
 ---
-title:  二分查找与其变体
-date: 2018-03-04
+title: 二分查找与其变体
 categories: 算法
 tag: 二分查找
+abbrlink: 54313
+date: 2018-03-04 00:00:00
 ---
 二分查找针对的是一个有序的数据集合，时间复杂度为O(logn) 
 
@@ -10,7 +11,7 @@ $data = [8,11,19,23,33,33,33,45,55,67,98];
 
 ### 普通的二分查找
 
-``` bash
+``` php
 function binarySearch(array $data,$find){
 	$left  = 0;
 	$right = count($data) - 1;
@@ -30,7 +31,7 @@ function binarySearch(array $data,$find){
 
 ### 找到第一个=find的元素
 
-``` bash
+``` php
 function findFirstEqual(array $data,$find) {
     $length = count($data);
     $left = 0;
@@ -61,7 +62,7 @@ function findFirstEqual(array $data,$find) {
 ### 找到最后一个=find的元素
 
 
-``` bash
+``` php
 function findLastEqual(array $data,$find) {
     $length = count($data);
     $left = 0;
@@ -92,7 +93,7 @@ function findLastEqual(array $data,$find) {
 
 ### 找到第一个大于等于find的元素
 
-``` bash
+``` php
 function findFirstGreaterEqual(array $data,$find) {
     $length = count($data);
     $left = 0;
@@ -115,7 +116,7 @@ function findFirstGreaterEqual(array $data,$find) {
 
 ### 找到最后一个小于等于find的元素
 
-``` bash
+``` php
 function findLastLessEqual(array $data,$find) {
     $length = count($data);
     $left = 0;

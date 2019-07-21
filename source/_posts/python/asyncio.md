@@ -1,8 +1,9 @@
 ---
-date: 2018-04-11 
 title: 协程 asyncio
 categories: Python
-tag: asyncio 
+tag: asyncio
+abbrlink: 30624
+date: 2018-04-11 00:00:00
 ---
 协程可称为用户态的线程，由用户态完成创建，切换和销毁。IO操作频繁的可以由协程异步操作，相比与线程减少线程切换的开销。
 
@@ -14,7 +15,7 @@ tag: asyncio
 
 ### 定义一个协程
 
-``` bash
+``` php
 import asyncio
 import time
 
@@ -46,7 +47,7 @@ for result in results:
 print("Time:", now()-start)
 ```
 执行结果
-``` bash
+``` php
 waiting: 1
 waiting: 2
 waiting: 4
@@ -63,7 +64,7 @@ Time: 4.022229909896851
 
 很多时候，我们的事件循环用于注册协程，而有的协程需要动态的添加到事件循环中。一个简单的方式就是使用多线程。当前线程创建一个事件循环，然后在新建一个线程，在新线程中启动事件循环。当前线程不会被block。
 
-``` bash
+``` php
 import asyncio
 import time
 from threading import Thread
