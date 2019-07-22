@@ -1,7 +1,7 @@
 ---
 title: Websokcet 实现mini聊天室
 date: 2019-05-21
-categories: php
+categories: PHP
 tag: websokcet
 top: true
 ---
