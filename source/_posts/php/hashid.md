@@ -1,8 +1,9 @@
 ---
 title: 对ID进行隐藏
-date: 2019-01-11
 categories: PHP
 tag: Larael
+abbrlink: 50736
+date: 2019-01-11 00:00:00
 ---
 ## Hashid
 

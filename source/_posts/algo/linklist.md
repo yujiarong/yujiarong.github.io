@@ -1,8 +1,9 @@
 ---
 title: 单向链表操作
-date: 2018-03-08 
 categories: 算法
 tag: 链表
+abbrlink: 12741
+date: 2018-03-08 00:00:00
 ---
 
 ### PHP 操作单向链表

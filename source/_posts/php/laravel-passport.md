@@ -1,8 +1,9 @@
 ---
 title: Laravel Passport Api 认证
-date: 2019-03-15
 categories: PHP
 tag: passport
+abbrlink: 12855
+date: 2019-03-15 00:00:00
 ---
 
 此文用来梳理如何在Laravel中使用Passport的Personal Access Token 来做Api 用户认证。
