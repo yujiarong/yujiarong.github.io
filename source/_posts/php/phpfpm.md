@@ -1,8 +1,9 @@
 ---
 title: php-fpm 配置文件优化
-date: 2018-07-11
 categories: PHP
 tag: phpfpm
+abbrlink: 20119
+date: 2018-07-11 00:00:00
 ---
 
 ## PHP-FPM

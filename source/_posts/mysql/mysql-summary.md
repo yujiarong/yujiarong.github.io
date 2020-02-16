@@ -2,12 +2,12 @@
 title: 『浅入浅出』MySQL 和 InnoDB
 categories: Mysql
 tag: mysql
+abbrlink: 17045
 date: 2019-07-13 00:00:00
 ---
 
 # 『浅入浅出』MySQL 和 InnoDB
 
-以下文章转载自 [『浅入浅出』MySQL 和 InnoDB · 面向信仰编程](https://draveness.me/mysql-innodb)  浅入浅出，说的挺好，图文并茂 O(∩_∩)O。
 
 ## 数据库的定义
 很多开发者在最开始时其实都对数据库有一个比较模糊的认识，觉得数据库就是一堆数据的集合，但是实际却比这复杂的多，数据库领域中有两个词非常容易混淆，也就是数据库和实例：
@@ -335,3 +335,4 @@ MySQL 中默认的事务隔离级别就是 REPEATABLE READ，但是它通过 Nex
 `REPEATABLE READ` 和 `READ UNCOMMITED` 其实是矛盾的，如果保证了前者就看不到已经提交的事务，如果保证了后者，就会导致两次查询的结果不同，MySQL 为我们提供了一种折中的方式，能够在 `REPEATABLE READ` 模式下加锁访问已经提交的数据，其本身并不能解决幻读的问题，而是通过文章前面提到的 `Next-Key` 锁来解决。
 
 
+以上文章转载自[『浅入浅出』MySQL 和 InnoDB · 面向信仰编程](https://draveness.me/mysql-innodb)浅入浅出，说的挺好，图文并茂O(∩_∩)O。

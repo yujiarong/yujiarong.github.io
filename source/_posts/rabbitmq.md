@@ -5,7 +5,8 @@ tag: rabbitMQ
 abbrlink: 9452
 date: 2019-01-25 00:00:00
 ---
-RabbitMQ是实现了高级消息队列协议（AMQP）的开源消息代理软件（亦称面向消息的中间件）
+RabbitMQ是实现了高级消息队列协议（AMQP）的开源消息代理软件（亦称面向消息的中间件）,以下是目前主流开源的MQ基本情况对比
+![](/medias/post/mq-compare.jpg)
 
 ## Rabbitmq特性
 
